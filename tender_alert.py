@@ -168,8 +168,8 @@ def fetch_tenders():
             for row in rows:
                 text = clean(row.get_text(" ", strip=True))
 
-                if len(text) > 50:
-                    print(text[:150])
+                if "tender id" in text.lower():
+                    print("FOUND TENDER:", text[:500])
                 
                 if not is_real_tender_row(text):
                     continue
