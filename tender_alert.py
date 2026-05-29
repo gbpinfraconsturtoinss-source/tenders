@@ -70,6 +70,14 @@ def fetch_tenders():
 
                 if len(text) < 40:
                     continue
+                    if "contents owned and maintained" in text.lower():
+    continue
+
+if "national rural roads development agency" in text.lower():
+    continue
+
+if "visitor no" in text.lower():
+    continue
 
                 if match_tender(text) and value_ok(text):
                     results.append({
