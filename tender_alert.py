@@ -65,29 +65,34 @@ def fetch_tenders():
             r = requests.get(url, timeout=25, headers={"User-Agent": "Mozilla/5.0"})
             soup = BeautifulSoup(r.text, "html.parser")
 
-           for row in soup.find_all("tr"):
-    text = clean(row.get_text(" ", strip=True))
+            for row in soup.find_all("tr"):
+                text = clean(row.get_text(" ", strip=True))
 
-    if len(text) < 40:
-        continue
+                if len(text) < 40:
+                    continue
 
-    if "contents owned and maintained" in text.lower():
-        continue
+                if "contents owned and maintained" in text.lower():
+                    continue
 
-    if "national rural roads development agency" in text.lower():
-        continue
+                if "national rural roads development agency" in text.lower():
+                    continue
 
-    if "visitor no" in text.lower():
-        continue
+                if "visitor no" in text.lower():
+                    continue
 
-    if match_tender(text) and value_ok(text):
-        results.append({
-            "site": url,
-            "text": text[:700]
-        })
+                if match_tender(text) and value_ok(text):
+                    results.append({
+                        "site": url,
+                        "text": text[:700]
+                    })
 
- return results
+        except Exception as e:
+            results.append({
+                "site": url,
+                "text": f"Error checking site: {e}"
+            })
 
+    return results
 def send_email(tenders):
     if tenders:
         subject = f"Daily Tender Alert: {len(tenders)} matching tenders found"
