@@ -161,11 +161,16 @@ def fetch_tenders():
             r = requests.get(url, timeout=30, headers=headers)
             soup = BeautifulSoup(r.text, "html.parser")
 
-            rows = soup.find_all("tr")
+           rows = soup.find_all("tr")
 
-            for row in rows:
-                text = clean(row.get_text(" ", strip=True))
+print(f"{name} -> Total Rows Found: {len(rows)}")
 
+for row in rows:
+    text = clean(row.get_text(" ", strip=True))
+
+    if len(text) > 50:
+        print(text[:150])
+                
                 if not is_real_tender_row(text):
                     continue
 
