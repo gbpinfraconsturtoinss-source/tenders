@@ -11,7 +11,8 @@ MIN_VALUE = 5000000  # 50 lakh
 INCLUDE = [
     "rcc road", "cc road", "road construction",
     "building construction", "infrastructure",
-    "prefab", "prefabricated", "civil work", "civil works"
+    "prefab", "prefabricated", "civil work", "civil works",
+    "construction", "road", "building"
 ]
 
 EXCLUDE = [
