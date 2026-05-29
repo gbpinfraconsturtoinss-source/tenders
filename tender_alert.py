@@ -9,10 +9,13 @@ EMAIL_TO = os.getenv("EMAIL_TO")
 MIN_VALUE = 5000000  # 50 lakh
 
 INCLUDE = [
-    "rcc road", "cc road", "road construction",
-    "building construction", "infrastructure",
-    "prefab", "prefabricated", "civil work", "civil works",
-    "construction", "road", "building"
+    "rcc", "rcc road", "cc road",
+    "road", "road work", "road construction",
+    "building", "building construction",
+    "civil", "civil work", "civil works",
+    "infrastructure", "infra",
+    "prefab", "prefabricated", "peb",
+    "pwd", "cpwd", "smart city"
 ]
 
 EXCLUDE = [
